@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <h5>Ajouter un produit</h5>
+      <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        <div class="form-group">
+          <label for="name">Nom du produit</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.nameProduct" required>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="price">Prix</label>
+          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.priceProduct" required>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="product.dateCreate" required>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="category">Catégorie</label>
+          <select class="form-control" id="category" name="category" [(ngModel)]="product.category" required>
+            <option *ngFor="let category of categories" [ngValue]="category">{{ category.category }}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+      </form>
+    </div>
+  </div>
+</div>

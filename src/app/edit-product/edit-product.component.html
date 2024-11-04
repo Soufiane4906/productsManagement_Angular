@@ -1,0 +1,47 @@
+<!-- Edit product form -->
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <h5>Modifier un produit</h5>
+      <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+        <!-- Product ID -->
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" id="id" name="id" [(ngModel)]="newProduct.idProduct" disabled>
+        </div>
+
+        <!-- Product Name -->
+        <div class="form-group">
+          <label for="name">Nom du produit</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newProduct.nameProduct" required>
+        </div>
+
+        <!-- Product Price -->
+        <div class="form-group mt-3">
+          <label for="price">Prix</label>
+          <input type="number" class="form-control" id="price" name="price" [(ngModel)]="newProduct.priceProduct" required>
+        </div>
+
+        <!-- Product Date -->
+        <div class="form-group mt-3">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" name="date" [(ngModel)]="newProduct.dateCreate  "   required>
+        </div>
+        <!-- Product Category and selected old one -->
+        <div class="form-group mt-3">
+          <label for="category">Catégorie</label>
+          <select class="form-control" id="category" name="category" [(ngModel)]="newProduct.category" required>
+            <option *ngFor="let category of categories" [ngValue]="category">
+              {{ category.category }}
+            </option>
+          </select>
+        </div>
+
+
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary mt-3">Modifier</button>
+      </form>
+    </div>
+  </div>
+</div>

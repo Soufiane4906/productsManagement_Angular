@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <h5>Products List</h5>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchQuery" (input)="searchProducts()">
+        </div>
+        <table class="table table-hover table-responsive-lg mt-4">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Actions</th>
+
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of filteredProducts | paginate: { itemsPerPage: 10, currentPage: page }">
+            <td>{{ product.idProduct }}</td>
+            <td>{{ product.nameProduct }}</td>
+            <td>{{ product.priceProduct }}</td>
+            <td>{{ product.dateCreate | date }}</td>
+            <td>{{ product.category?.category }}</td>
+            <td>
+              <a class="btn btn-primary" href="/products/{{ product.idProduct }}" (click)="show(product)">Show</a>
+              <a class="btn btn-warning" [routerLink]="['/edit-product/', product.idProduct]">Edit</a>
+              <a class="btn btn-danger" (click)="deleteProduct(product)">Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
