@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { CategoryService } from './category.service';
-import { Category } from '../models/category';
+import { apiUrl } from '../app.config';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:8080/api/products';
+  private apiUrl = apiUrl;
   products: Product[] = [];
 
   constructor(private http: HttpClient, private categoryService: CategoryService) {

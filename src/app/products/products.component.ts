@@ -5,6 +5,7 @@ import { ProductService } from '../services/product.service';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,8 @@ export class ProductsComponent {
   searchQuery: string = '';
   page: number = 1;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router , protected Auth: AuthService) {
+
     this.loadProducts();
   }
 

@@ -14,7 +14,7 @@
             <th>Price</th>
             <th>Date</th>
             <th>Category</th>
-            <th>Actions</th>
+            <th >Actions</th>
 
 
           </tr>
@@ -27,8 +27,7 @@
             <td>{{ product.dateCreate | date }}</td>
             <td>{{ product.category?.category }}</td>
             <td>
-              <a class="btn btn-primary" href="/products/{{ product.idProduct }}" (click)="show(product)">Show</a>
-              <a class="btn btn-warning" [routerLink]="['/edit-product/', product.idProduct]">Edit</a>
+              <a class="btn btn-warning"*ngIf="this.Auth.isAdmin()" [routerLink]="['/edit-product/', product.idProduct]">Edit</a>
               <a class="btn btn-danger" (click)="deleteProduct(product)">Delete</a>
             </td>
           </tr>
